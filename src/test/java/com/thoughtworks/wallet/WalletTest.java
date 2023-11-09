@@ -2,6 +2,7 @@ package com.thoughtworks.wallet;
 
 import org.junit.jupiter.api.Test;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.hamcrest.Matchers.closeTo;
@@ -18,7 +19,7 @@ public class WalletTest {
 
         Rupee balance = wallet.balance();
 
-        assertTrue(balance.equals(check));
+        assertEquals(balance, check);
     }
 
     @Test
@@ -30,7 +31,7 @@ public class WalletTest {
 
         Rupee balance = wallet.balance();
 
-        assertTrue(balance.equals(check));
+        assertEquals(balance, check);
     }
 
     @Test
@@ -48,7 +49,7 @@ public class WalletTest {
         wallet.put(amount);
 
         Rupee balance = wallet.balance();
-        assertTrue(balance.equals(check));
+        assertEquals(balance, check);
     }
 
 }
