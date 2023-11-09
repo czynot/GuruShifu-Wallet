@@ -1,57 +1,54 @@
 package com.thoughtworks.wallet;
 
-import com.thoughtworks.wallet.Wallet;
-
 import org.junit.jupiter.api.Test;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.hamcrest.Matchers.equalTo;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.hamcrest.Matchers.closeTo;
 import static org.hamcrest.Matchers.is;
 
-import java.beans.Transient;
 
 public class WalletTest {
 
 
     @Test
-    public void shouldReturnBalanceWhenEmpty() {
+    public void shouldReturnBalanceWhenEmpty() throws Exception{
         Wallet wallet = new Wallet(0);
+        Rupee check = new Rupee(0);
 
-        double balance = wallet.balance();
+        Rupee balance = wallet.balance();
 
-        assertThat(balance, is(closeTo(0.00, 0.01)));
+        assertTrue(balance.equals(check));
     }
 
     @Test
     public void shouldAddAmountToEmptyWallet() throws Exception{
         Wallet wallet = new Wallet(0);
-        double amount = 20;
-
+        Rupee amount = new Rupee(20);
+        Rupee check = new Rupee(20);
         wallet.put(amount);
 
-        double balance = wallet.balance();
-        assertThat(balance, is(closeTo(20.00, 0.01)));
+        Rupee balance = wallet.balance();
+
+        assertTrue(balance.equals(check));
     }
 
     @Test
     public void shouldThrowExceptionWhenNegativeBalanceIsAdded() throws Exception {
-        Wallet wallet = new Wallet(0);
-        double amount = -10;
-
-        assertThrows(Exception.class, () -> wallet.put(amount));
+        assertThrows(Exception.class, () -> new Rupee(-10));
     }
 
     @Test
     public void shouldAddAmountToWalletAgain() throws Exception{
         Wallet wallet = new Wallet(0);
-        double amount = 20;
+        Rupee amount = new Rupee(20);
+        Rupee check = new Rupee(40);
         wallet.put(amount);
 
         wallet.put(amount);
 
-        double balance = wallet.balance();
-        assertThat(balance, is(closeTo(40.00, 0.01)));
+        Rupee balance = wallet.balance();
+        assertTrue(balance.equals(check));
     }
 
 }

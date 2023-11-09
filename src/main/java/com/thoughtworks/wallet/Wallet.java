@@ -1,24 +1,20 @@
 package com.thoughtworks.wallet;
 
-import com.thoughtworks.wallet.NegativeRupeeException;
-
-
 public class Wallet {
 
-    private double balance = 0;
+    private Rupee balance;
 
-    public Wallet(double balance) {       
-        this.balance = balance;
+    public Wallet(double balance) throws Exception {  
+        Rupee rupee = new Rupee(balance);     
+        this.balance = rupee;
     }
 
-    public double balance() {
+    public Rupee balance() {
         return this.balance;
     }
 
-    public void put(double amount) throws Exception {
-        if (amount < 0)
-            throw new Exception();
-
-        this.balance += amount;
+    public void put(Rupee amount) throws Exception {
+        Rupee newAmount = new Rupee(0);
+        this.balance = newAmount.add(this.balance, amount);
     }
 }
