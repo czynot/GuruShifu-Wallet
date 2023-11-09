@@ -17,4 +17,10 @@ public class Wallet {
         Rupee newAmount = new Rupee(0);
         this.balance = newAmount.add(this.balance, amount);
     }
+
+    public void put(Dollar amount) throws Exception {
+        double amountInRupee = amount.amount() * 80;
+        Rupee newAmount = new Rupee(amountInRupee);
+        this.balance = newAmount.add(this.balance, newAmount);
+    }
 }

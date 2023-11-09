@@ -52,4 +52,31 @@ public class WalletTest {
         assertEquals(balance, check);
     }
 
+    @Test
+    public void shouldAddDollarToWallet() throws Exception{
+        Wallet wallet = new Wallet(0);
+        Dollar amount = new Dollar(10);
+        Rupee check = new Rupee(800);
+
+        wallet.put(amount);
+
+        Rupee balance = wallet.balance();
+        assertEquals(balance,check);
+    }
+
+    @Test
+    public void shouldAddDollarToWalletWhenRupeeIsAlreadyThere() throws Exception{
+        Wallet wallet = new Wallet(0);
+        Rupee rupeeAmount = new Rupee(20);
+        wallet.put(rupeeAmount);
+        Dollar dollarAmount = new Dollar(10);
+        Rupee check = new Rupee(820);
+
+        wallet.put(dollarAmount);
+
+        Rupee balance = wallet.balance();
+        assertEquals(balance, check);
+    }
+
+
 }
