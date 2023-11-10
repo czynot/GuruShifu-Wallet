@@ -15,9 +15,9 @@ public class WalletTest {
     @Test
     public void shouldReturnBalanceWhenEmpty() throws Exception{
         Wallet wallet = new Wallet(0);
-        Rupee check = new Rupee(0);
+        Currency check = new Currency(0, Currency.currencyType.INR);
 
-        Rupee balance = wallet.balance();
+        Currency balance = wallet.balance();
 
         assertEquals(balance, check);
     }
@@ -25,56 +25,56 @@ public class WalletTest {
     @Test
     public void shouldAddAmountToEmptyWallet() throws Exception{
         Wallet wallet = new Wallet(0);
-        Rupee amount = new Rupee(20);
-        Rupee check = new Rupee(20);
+        Currency amount = new Currency(20, Currency.currencyType.INR);
+        Currency check = new Currency(20, Currency.currencyType.INR);
         wallet.put(amount);
 
-        Rupee balance = wallet.balance();
+        Currency balance = wallet.balance();
 
         assertEquals(balance, check);
     }
 
     @Test
     public void shouldThrowExceptionWhenNegativeBalanceIsAdded() throws Exception {
-        assertThrows(Exception.class, () -> new Rupee(-10));
+        assertThrows(Exception.class, () -> new Currency(-10, Currency.currencyType.INR));
     }
 
     @Test
     public void shouldAddAmountToWalletAgain() throws Exception{
         Wallet wallet = new Wallet(0);
-        Rupee amount = new Rupee(20);
-        Rupee check = new Rupee(40);
+        Currency amount = new Currency(20, Currency.currencyType.INR);
+        Currency check = new Currency(40, Currency.currencyType.INR);
         wallet.put(amount);
 
         wallet.put(amount);
 
-        Rupee balance = wallet.balance();
+        Currency balance = wallet.balance();
         assertEquals(balance, check);
     }
 
     @Test
     public void shouldAddDollarToWallet() throws Exception{
         Wallet wallet = new Wallet(0);
-        Dollar amount = new Dollar(10);
-        Rupee check = new Rupee(800);
+        Currency amount = new Currency(10, Currency.currencyType.USD);
+        Currency check = new Currency(800, Currency.currencyType.INR);
 
         wallet.put(amount);
 
-        Rupee balance = wallet.balance();
+        Currency balance = wallet.balance();
         assertEquals(balance,check);
     }
 
     @Test
     public void shouldAddDollarToWalletWhenRupeeIsAlreadyThere() throws Exception{
         Wallet wallet = new Wallet(0);
-        Rupee rupeeAmount = new Rupee(20);
+        Currency rupeeAmount = new Currency(20, Currency.currencyType.INR);
         wallet.put(rupeeAmount);
-        Dollar dollarAmount = new Dollar(10);
-        Rupee check = new Rupee(820);
+        Currency dollarAmount = new Currency(10, Currency.currencyType.USD);
+        Currency check = new Currency(820, Currency.currencyType.INR);
 
         wallet.put(dollarAmount);
 
-        Rupee balance = wallet.balance();
+        Currency balance = wallet.balance();
         assertEquals(balance, check);
     }
 

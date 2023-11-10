@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.thoughtworks.wallet.WalletTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2023-11-09T11:07:34" hostname="Parths-MacBook-Pro.local" time="0.041">
+<testsuite name="com.thoughtworks.wallet.WalletTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2023-11-10T05:30:27" hostname="Parths-MacBook-Pro.local" time="0.033">
   <properties/>
-  <testcase name="shouldReturnBalanceWhenEmpty()" classname="com.thoughtworks.wallet.WalletTest" time="0.023"/>
+  <testcase name="shouldReturnBalanceWhenEmpty()" classname="com.thoughtworks.wallet.WalletTest" time="0.019"/>
   <testcase name="shouldThrowExceptionWhenNegativeBalanceIsAdded()" classname="com.thoughtworks.wallet.WalletTest" time="0.003"/>
   <testcase name="shouldAddAmountToEmptyWallet()" classname="com.thoughtworks.wallet.WalletTest" time="0.001"/>
-  <testcase name="shouldAddDollarToWallet()" classname="com.thoughtworks.wallet.WalletTest" time="0.002"/>
+  <testcase name="shouldAddDollarToWallet()" classname="com.thoughtworks.wallet.WalletTest" time="0.001"/>
   <testcase name="shouldAddAmountToWalletAgain()" classname="com.thoughtworks.wallet.WalletTest" time="0.002"/>
-  <testcase name="shouldAddDollarToWalletWhenRupeeIsAlreadyThere()" classname="com.thoughtworks.wallet.WalletTest" time="0.002"/>
+  <testcase name="shouldAddDollarToWalletWhenRupeeIsAlreadyThere()" classname="com.thoughtworks.wallet.WalletTest" time="0.001"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
