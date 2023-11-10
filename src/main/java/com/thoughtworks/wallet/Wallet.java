@@ -1,18 +1,25 @@
 package com.thoughtworks.wallet;
 
 public class Wallet {
-    private Currency balance;
+    private Money balance;
 
     public Wallet(double balance) throws Exception {
-        Currency money = new Currency(balance, Currency.currencyType.INR);
+        Money money = new Money(balance, Money.Currency.INR);
         this.balance = money;
     }
 
-    public Currency balance() {
+    public Money balance() {
         return this.balance;
     }
 
-    public void put(Currency amount) throws Exception {
+    public void put(Money amount) throws Exception {
         this.balance = this.balance.add(amount);
+    }
+
+    public Money withdraw(Money withdrawlAmount) throws Exception{
+        this.balance = this.balance.deduct(withdrawlAmount);
+        Money withdrawl = this.balance.withdraw(withdrawlAmount);
+        return withdrawl;
+
     }
 }
